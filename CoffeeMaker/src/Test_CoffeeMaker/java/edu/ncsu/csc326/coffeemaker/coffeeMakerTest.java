@@ -167,13 +167,7 @@ public class coffeeMakerTest {
         int change = coffeeMaker.makeCoffee(0,50);
         Assertions.assertEquals(50, change);
     }
-    // #14 Test how Making Coffee handles Invalid recipe Input , index prob
-    @Test
-    void checkMakingCoffeeWithInvalidRecipe(){
-        int change = coffeeMaker.makeCoffee(coffeeMaker.getRecipes().length +1,50);
-        Assertions.assertEquals(50, change);
-    }
-    // #15 Test how Making Coffee handles Invalid Price Input
+    // #14 Test how Making Coffee handles Invalid Price Input
     @Test
     void checkMakingCoffeeWithInvalidPrice() throws RecipeException {
         rTest1.setPrice("50");
@@ -181,7 +175,7 @@ public class coffeeMakerTest {
         int change = coffeeMaker.makeCoffee(0,-10);
         Assertions.assertEquals(0, change);
     }
-    // #16 Test how Making Coffee handles Smaller Price Input
+    // #15 Test how Making Coffee handles Smaller Price Input
     @Test
     void checkMakingCoffeeWithLowerPrice() throws RecipeException{
         rTest1.setPrice("50");
@@ -190,7 +184,7 @@ public class coffeeMakerTest {
         Assertions.assertEquals(20, change);
 
     }
-    // #17 Test how Making Coffee handles Empty Inventory
+    // #16 Test how Making Coffee handles Empty Inventory
     @Test
     void checkMakingCoffeeWithNoInventory() throws RecipeException{
         rTest1.setPrice("60");
