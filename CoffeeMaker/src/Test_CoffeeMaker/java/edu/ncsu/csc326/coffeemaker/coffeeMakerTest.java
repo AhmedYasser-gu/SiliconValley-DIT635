@@ -62,7 +62,7 @@ public class coffeeMakerTest {
     // #3 Testing delete with null item
     @Test
     void checkDeletingRecipeThatIsNull(){
-        Assertions.assertNull(coffeeMaker.deleteRecipe(1));
+        Assertions.assertNull(coffeeMaker.deleteRecipe(3));
     }
     // #4 Testing to check added Recipe
     @Test
@@ -81,7 +81,7 @@ public class coffeeMakerTest {
         Assertions.assertNotSame(rTest1, coffeeMaker.getRecipes()[0]);
         Assertions.assertNull(coffeeMaker.getRecipes()[0]);
     }
-    // #6 Test to check Edit of Recipe Content // Not sure
+    // #6 Test to check Edit of Recipe Content
     @Test
     void checkEditingRecipeContent() throws RecipeException {
 
@@ -99,7 +99,7 @@ public class coffeeMakerTest {
         Assertions.assertArrayEquals(recipes, coffeeMaker.getRecipes());
         Assertions.assertSame(rTest3, coffeeMaker.getRecipes()[0]);
     }
-    // #7 Testing edit with null address location , which should fail but does not
+    // #7 Testing edit with null address location
     @Test
     void checkEditingRecipeWithNull() {
         Assertions.assertNull(coffeeMaker.editRecipe(0, rTest2));
@@ -114,11 +114,11 @@ public class coffeeMakerTest {
     @Test
     void checkAddingValidInputToInventory(){
         try {
-            coffeeMaker.addInventory("21", "22", "23", "24");
-            Assertions.assertEquals("Coffee: 15\n" +
-                    "Milk: 15\n" +
-                    "Sugar: 15\n" +
-                    "Chocolate: 15\n", coffeeMaker.checkInventory());
+            coffeeMaker.addInventory("15", "15", "15", "15");
+            Assertions.assertEquals("Coffee: 30\n" +
+                    "Milk: 30\n" +
+                    "Sugar: 30\n" +
+                    "Chocolate: 30\n", coffeeMaker.checkInventory());
         }
         catch (InventoryException e){
             e.getMessage();
