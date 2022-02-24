@@ -172,6 +172,7 @@ public class coffeeMakerTest {
     void checkMakingCoffeeWithInvalidPrice() throws RecipeException {
         rTest1.setPrice("50");
         coffeeMaker.addRecipe(rTest1);
+
         int change = coffeeMaker.makeCoffee(0,-10);
         Assertions.assertEquals(0, change);
     }
@@ -196,5 +197,11 @@ public class coffeeMakerTest {
         int change = coffeeMaker.makeCoffee(0,70);
         Assertions.assertEquals(70, change);
 
+    }
+    // #17 Test how Making Coffee handles recipe not from the list
+    @Test
+    void checkMakingCoffeeWithInvalidRecipe(){
+        int change = coffeeMaker.makeCoffee(coffeeMaker.getRecipes().length +2,50);
+        Assertions.assertEquals(50, change);
     }
 }
