@@ -18,7 +18,7 @@ public class RecipeBookTest {
     private Recipe recipeTest5;
 
     private Recipe recipeTest1SameName;
-    private Recipe recipeTestNegativeInputs;
+
 
     @BeforeEach
     void setUp() throws RecipeException {
@@ -132,50 +132,30 @@ public class RecipeBookTest {
      * Test for checking if a recipe gets denied from being added when all ingredient inputs are zero.
      */
     @Test
-    public void addRecipeWithZeroForAllIngredients() {
-        try {
+    public void addRecipeWithZeroForAllIngredients() throws RecipeException{
+            Recipe[] recipes = recipeBook.getRecipes();
             recipeTest1.setAmtChocolate("0");
             recipeTest1.setAmtCoffee("0");
             recipeTest1.setAmtMilk("0");
             recipeTest1.setAmtSugar("0");
             recipeTest1.setPrice("50");
             recipeBook.addRecipe(recipeTest1);
-            Assertions.assertFalse(recipeBook.addRecipe(recipeTest5));
-        } catch (RecipeException e) {
-            Assertions.fail("Threw RecipeException");
-        }
+            Assertions.assertNull(recipes[0]);
+
     }
     /**
      * #7
      * Delete an existing recipe and check that it gets removed from the recipe book.
      */
     @Test
-    public void addAndRemoveRecipe() {
+    public void removeRecipe() {
+        Recipe[] recipes = recipeBook.getRecipes();
         recipeBook.addRecipe(recipeTest1);
         recipeBook.deleteRecipe(0);
-        boolean checkForRecipe1 = recipeBook.equals(recipeTest1);
-        Assertions.assertFalse(checkForRecipe1, "Recipe was removed");
+        Assertions.assertEquals(null,recipes[0]);
     }
     /**
      * #8
-     * Test for adding a recipe with a negative unit of measure for one or more input variables.
-     */
-    @Test
-    public void addRecipeWithNegativeValues() {
-        try {
-            recipeTest1.setAmtChocolate("-1");
-            recipeTest1.setAmtCoffee("-5");
-            recipeTest1.setAmtMilk("-1");
-            recipeTest1.setAmtSugar("-5");
-            recipeTest1.setPrice("50");
-            recipeBook.addRecipe(recipeTest1);
-            Assertions.assertFalse(recipeBook.addRecipe(recipeTest5));
-        } catch (RecipeException e) {
-            Assertions.fail("Threw RecipeException");
-        }
-    }
-    /**
-     * #9
      * Test for checking if a recipe can be added with 0 dollars as price.
      */
     @Test
@@ -186,5 +166,16 @@ public class RecipeBookTest {
         } catch (RecipeException e) {
             Assertions.fail("Threw RecipeException");
         }
+    }
+    /**
+     * #9
+     * Test for retrieving the recipe book.
+     */
+    @Test
+    public void recipeBookArrayRetreived() throws Exception{
+        Recipe[] recipes = recipeBook.getRecipes();
+        recipeBook.addRecipe(recipeTest1);
+        Assertions.assertEquals(recipeTest1, recipes[0]);
+
     }
 }
