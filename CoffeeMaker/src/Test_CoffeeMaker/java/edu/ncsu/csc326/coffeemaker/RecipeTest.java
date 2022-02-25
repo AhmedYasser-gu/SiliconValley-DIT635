@@ -243,7 +243,7 @@ public class RecipeTest {
     }
 
     /**
-     * #22
+     * #23
      * Test to check if setting the name works
      */
     @Test
@@ -253,7 +253,7 @@ public class RecipeTest {
     }
 
     /**
-     * #23
+     * #24
      * Test that checks what happens when an empty string is provided when setting the name
      */
     @Test
@@ -263,7 +263,7 @@ public class RecipeTest {
     }
 
     /**
-     * #24
+     * #25
      * Test to check if the correct price amount was set
      */
     @Test
@@ -272,7 +272,7 @@ public class RecipeTest {
     }
 
     /**
-     * #25
+     * #26
      * Test to check if setting the price amount works
      */
     @Test
@@ -286,7 +286,7 @@ public class RecipeTest {
     }
 
     /**
-     * #26
+     * #27
      * Test that tries to set price to a negative number
      */
     @Test
@@ -295,7 +295,7 @@ public class RecipeTest {
     }
 
     /**
-     * #27
+     * #28
      * Test that checks what happens when an empty string is provided when setting amount of price
      */
     @Test
@@ -304,7 +304,7 @@ public class RecipeTest {
     }
 
     /**
-     * #28
+     * #29
      * Test for when letters are entered instead of numbers
      */
     @Test
@@ -313,7 +313,7 @@ public class RecipeTest {
     }
 
     /**
-     * #29
+     * #30
      * Test for when setting price to null
      */
     @Test
