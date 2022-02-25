@@ -234,7 +234,7 @@ public class RecipeTest {
 
     /**
      * #22
-     * Test to check if setting the name works
+     * Test to check if setting an empty name works
      */
     @Test
     public void testEmptyName() {
