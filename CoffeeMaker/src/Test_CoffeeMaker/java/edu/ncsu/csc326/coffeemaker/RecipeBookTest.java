@@ -162,7 +162,7 @@ public class RecipeBookTest {
     public void zeroDollars() {
         try {
             recipeTest1.setPrice("0");
-            Assertions.assertFalse(recipeBook.addRecipe(recipeTest1));
+            Assertions.assertNotEquals(0, recipeTest1.getPrice());
         } catch (RecipeException e) {
             Assertions.fail("Threw RecipeException");
         }
@@ -172,10 +172,18 @@ public class RecipeBookTest {
      * Test for retrieving the recipe book.
      */
     @Test
-    public void recipeBookArrayRetreived() throws Exception{
+    public void recipeBookArrayRetrieved() throws Exception{
         Recipe[] recipes = recipeBook.getRecipes();
         recipeBook.addRecipe(recipeTest1);
         Assertions.assertEquals(recipeTest1, recipes[0]);
 
     }
+    /**
+     * #10
+     * Test for checking that we cant set negative ingredients.
+     */
+    @Test
+    public void addRecipeWithNegativeValues() {
+            Assertions.assertThrows(RecipeException.class, () -> recipeTest1.setAmtCoffee("-2"));
+        }
 }
