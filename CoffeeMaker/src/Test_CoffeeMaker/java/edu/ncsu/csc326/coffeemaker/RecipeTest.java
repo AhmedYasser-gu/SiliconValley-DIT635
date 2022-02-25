@@ -225,7 +225,7 @@ public class RecipeTest {
 
     /**
      * #21
-     * Test to check if the correct chocolate amount was set
+     * Test to check if the correct name was set
      */
     @Test
     public void checkCorrectName() {
