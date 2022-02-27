@@ -66,18 +66,13 @@ public class InventoryTest {
     @Test
     void trySetNegativeChocoAmt(){
         i.setChocolate(-1);
-        Assertions.assertEquals(-1, i.getChocolate());
+        Assertions.assertEquals(10, i.getChocolate());
     }
 
     // #5 Tries to add negative chocolate amount
     @Test
     void tryAddNegativeChocoAmt(){
-        try{
-            i.addChocolate("-1");
-            Assertions.assertEquals(9, i.getChocolate());
-        } catch (InventoryException a) {
-            Assertions.fail("Threw InventoryException");
-        }
+        Assertions.assertThrows(InventoryException.class, () -> i.addChocolate("-1"));
     }
 
     // #6 Tries to set zero chocolate amount
@@ -126,18 +121,13 @@ public class InventoryTest {
     @Test
     void trySetNegativeCoffeeAmt(){
         i.setCoffee(-1);
-        Assertions.assertEquals(-1, i.getCoffee());
+        Assertions.assertEquals(10, i.getCoffee());
     }
 
     // #12 Tries to add negative coffee amount
     @Test
     void tryAddNegativeCoffeeAmt(){
-        try{
-            i.addCoffee("-1");
-            Assertions.assertEquals(9, i.getCoffee());
-        } catch (InventoryException a) {
-            Assertions.fail("Threw InventoryException");
-        }
+        Assertions.assertThrows(InventoryException.class, () -> i.addCoffee("-1"));
     }
 
     // #13 Tries to set zero coffee amount
@@ -187,18 +177,13 @@ public class InventoryTest {
     @Test
     void trySetNegativeMilkAmt(){
         i.setMilk(-1);
-        Assertions.assertEquals(-1, i.getMilk());
+        Assertions.assertEquals(10, i.getMilk());
     }
 
     // #19 Tries to add negative milk amount
     @Test
     void tryAddNegativeMilkAmt(){
-        try{
-            i.addMilk("-1");
-            Assertions.assertEquals(9, i.getMilk());
-        } catch (InventoryException a) {
-            Assertions.fail("Threw InventoryException");
-        }
+        Assertions.assertThrows(InventoryException.class, () -> i.addMilk("-1"));
     }
 
     // #20 Tries to set zero milk amount
@@ -228,7 +213,7 @@ public class InventoryTest {
     // #23 Tries to add positive sugar amount
     @Test
     void trySetPositiveSugarAmt(){
-        i.setChocolate(5);
+        i.setSugar(5);
         Assertions.assertEquals(5, i.getSugar());
     }
 
@@ -247,18 +232,13 @@ public class InventoryTest {
     @Test
     void trySetNegativeSugarAmt(){
         i.setSugar(-1);
-        Assertions.assertEquals(-1, i.getSugar());
+        Assertions.assertEquals(10, i.getSugar());
     }
 
     // #26 Tries to add negative sugar amount
     @Test
     void tryAddNegativeSugarAmt(){
-        try{
-            i.addSugar("-1");
-            Assertions.assertEquals(9, i.getSugar());
-        } catch (InventoryException a) {
-            Assertions.fail("Threw InventoryException");
-        }
+        Assertions.assertThrows(InventoryException.class, () -> i.addSugar("-1"));
     }
 
     // #27 Tries to set zero sugar amount
@@ -285,11 +265,8 @@ public class InventoryTest {
 
     @Test
     void tryUseEnoughIngredients () {
-        i.useIngredients(r);
-        Assertions.assertEquals(5, i.getChocolate());
-        Assertions.assertEquals(15, i.getCoffee());
-        Assertions.assertEquals(5, i.getMilk());
-        Assertions.assertEquals(5, i.getSugar());
+        Assertions.assertEquals(true, i.useIngredients(r));
+
     }
 
     // #30 Try to use ingredient with not enough in inventory
@@ -299,10 +276,24 @@ public class InventoryTest {
         i.setChocolate(1);
         i.setMilk(1);
         i.setSugar(1);
-        i.useIngredients(r);
-        Assertions.assertEquals(-4, i.getChocolate());
-        Assertions.assertEquals(15, i.getCoffee());
-        Assertions.assertEquals(-4, i.getMilk());
-        Assertions.assertEquals(-4, i.getSugar());
+        Assertions.assertEquals(false, i.useIngredients(r));
+    }
+
+    // #31
+
+    @Test
+    void testEnoughIngredients(){
+        Assertions.assertEquals(true, i.enoughIngredients(r));
+    }
+
+    // #32
+
+    @Test
+    void testInsufficientIngredients(){
+        i.setChocolate(4);
+        i.setCoffee(4);
+        i.setMilk(4);
+        i.setSugar(4);
+        Assertions.assertEquals(false, i.enoughIngredients(r));
     }
 }
