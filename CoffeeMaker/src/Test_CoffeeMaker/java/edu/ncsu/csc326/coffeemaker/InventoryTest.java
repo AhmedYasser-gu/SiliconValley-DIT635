@@ -210,14 +210,14 @@ public class InventoryTest {
         Assertions.assertEquals(10, i.getSugar());
     }
 
-    // #23 Tries to add positive sugar amount
+    // #23 Tries to set positive sugar amount
     @Test
     void trySetPositiveSugarAmt(){
         i.setSugar(5);
         Assertions.assertEquals(5, i.getSugar());
     }
 
-    // #24 Tries to set positive sugar amount
+    // #24 Tries to add positive sugar amount
     @Test
     void tryAddPositiveSugarAmt(){
         try{
@@ -279,14 +279,14 @@ public class InventoryTest {
         Assertions.assertEquals(false, i.useIngredients(r));
     }
 
-    // #31
+    // #31 Test if there is enough ingredients when there is
 
     @Test
     void testEnoughIngredients(){
         Assertions.assertEquals(true, i.enoughIngredients(r));
     }
 
-    // #32
+    // #32 Test if there is enough ingredients when there is not
 
     @Test
     void testInsufficientIngredients(){
@@ -296,4 +296,5 @@ public class InventoryTest {
         i.setSugar(4);
         Assertions.assertEquals(false, i.enoughIngredients(r));
     }
+
 }
