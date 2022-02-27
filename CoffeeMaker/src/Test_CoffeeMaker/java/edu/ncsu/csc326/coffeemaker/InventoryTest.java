@@ -297,4 +297,12 @@ public class InventoryTest {
         Assertions.assertEquals(false, i.enoughIngredients(r));
     }
 
+    // #32 Tests toString
+    @Test
+    void testToString(){
+        Assertions.assertEquals("Coffee: 10\n" +
+                                        "Milk: 10\n" +
+                                        "Sugar: 10\n" +
+                                        "Chocolate: 10\n", i.toString());
+    }
 }
