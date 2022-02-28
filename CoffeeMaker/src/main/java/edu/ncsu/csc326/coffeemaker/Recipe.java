@@ -41,7 +41,7 @@ public class Recipe {
     	} catch (NumberFormatException e) {
     		throw new RecipeException("Units of chocolate must be a positive integer");
     	}
-		if (amtChocolate >= 0) {
+		if (amtChocolate >= 0) { // #3 Mutation change to (<=)
 			this.amtChocolate = amtChocolate;
 		} else {
 			throw new RecipeException("Units of chocolate must be a positive integer");
@@ -107,7 +107,7 @@ public class Recipe {
     	} catch (NumberFormatException e) {
     		throw new RecipeException("Units of sugar must be a positive integer");
     	}
-		if (amtSugar >= 0) {
+		if (amtSugar >= 0) { // #4 Mutation change to (<)
 			this.amtSugar = amtSugar;
 		} else {
 			throw new RecipeException("Units of sugar must be a positive integer");

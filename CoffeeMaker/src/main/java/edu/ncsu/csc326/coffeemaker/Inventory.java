@@ -59,7 +59,7 @@ public class Inventory {
     	} catch (NumberFormatException e) {
     		throw new InventoryException("Units of chocolate must be a positive integer");
     	}
-		if (amtChocolate >= 0) {
+		if (amtChocolate >= 0) { // #5 Mutation change to (==)
 			Inventory.chocolate += amtChocolate;
 		} else {
 			throw new InventoryException("Units of chocolate must be a positive integer");
@@ -99,7 +99,7 @@ public class Inventory {
     	} catch (NumberFormatException e) {
     		throw new InventoryException("Units of coffee must be a positive integer");
     	}
-		if (amtCoffee >= 0) {
+		if (amtCoffee == 0) {
 			Inventory.coffee += amtCoffee;
 		} else {
 			throw new InventoryException("Units of coffee must be a positive integer");
@@ -122,7 +122,7 @@ public class Inventory {
      */
     public synchronized void setMilk(int milk) {
     	if(milk >= 0) {
-    		Inventory.milk = milk; // Change milk to notmilk ( does not compile ) // Mutation #1
+    		Inventory.milk = milk; // Change milk to (notmilk) ( does not compile ) // Mutation #1
     	}
     }
     
@@ -180,7 +180,7 @@ public class Inventory {
     		throw new InventoryException("Units of sugar must be a positive integer");
     	}
 		if (amtSugar <= 0) {
-			Inventory.sugar += amtSugar;
+			Inventory.sugar += amtSugar; // #6 Mutation change to (*=)
 		} else {
 			throw new InventoryException("Units of sugar must be a positive integer");
 		}
