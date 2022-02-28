@@ -122,7 +122,7 @@ public class Inventory {
      */
     public synchronized void setMilk(int milk) {
     	if(milk >= 0) {
-    		Inventory.milk = milk;
+    		Inventory.milk = milk; // Change milk to notmilk ( does not compile ) // Mutation #1
     	}
     }
     

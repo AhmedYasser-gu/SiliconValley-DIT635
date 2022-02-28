@@ -38,7 +38,7 @@ public class RecipeBook {
 		boolean added = false;
 		//Check for first empty spot in array
 		if (!exists) {
-			for (int i = 0; i < recipeArray.length && !added; i++) {
+			for (int i = 0; i != recipeArray.length && !added; i++) { // Mutation #2
 				if (recipeArray[i] == null) {
 					recipeArray[i] = r;
 					added = true;
