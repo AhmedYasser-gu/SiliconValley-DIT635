@@ -85,7 +85,7 @@ public class Recipe {
     	} catch (NumberFormatException e) {
     		throw new RecipeException("Units of milk must be a positive integer");
     	}
-		if (amtMilk >= 0) {
+		if (amtMilk >= 0  ) { // Mutation #7  adding ( || amtMilk != 0 )
 			this.amtMilk = amtMilk;
 		} else {
 			throw new RecipeException("Units of milk must be a positive integer");
